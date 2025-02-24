@@ -1,0 +1,80 @@
+##
+## The Gremlin Configuration File
+##
+## Populating the values below is the preferred way to configure Gremlin installations directly on the host.
+## This file is read by both `gremlin` and `gremlind` processes without having to export shell environment variables.
+##
+## More info at https://www.gremlin.com/docs/infrastructure-layer/advanced-configuration/
+##
+## Uncomment and edit the lines below to pass them to Gremlin.
+## NOTE: a restart of `gremlind` is necessary to pick up changes
+##
+
+## Gremlin Identifier; uniquely identifies this agent with Gremlin
+## (can also set with GREMLIN_IDENTIFIER environment variable)
+#identifier: gremlin-01
+
+## Gremlin Team Id; you can find this value at https://app.gremlin.com/settings/teams
+## (can also be set with GREMLIN_TEAM_ID environment variable)
+team_id: 541d3318-e207-48b4-9d33-18e207b8b43e
+
+## Gremlin Client Tags; Tag your agent with key-value pairs that help you target this agent during attacks
+## (can also set with GREMLIN_CLIENT_TAGS environment variable)
+#tags:
+#  service: pet-store
+#  interface: http
+
+## Gremlin Team Secret, should not be set when using `team_certificate`+`team_private_key`
+## (can also set with GREMLIN_TEAM_SECRET environment variable)
+#team_secret: 11111111-1111-1111-1111-111111111111
+
+## Gremlin Team Certificate, should not be set when using `team_secret`.
+## Paste certificate content here or a paths to the file (prefixed with `file://`)
+## (can also set with GREMLIN_TEAM_CERTIFICATE_OR_FILE environment variable)
+team_certificate: | 
+ -----BEGIN CERTIFICATE-----
+ MIIBnzCCAUSgAwIBAgIBATAKBggqhkjOPQQDAjBJMSMwIQYDVQQDDBpHcmVtbGlu
+ IENsaWVudCBDZXJ0aWZpY2F0ZTEMMAoGA1UECwwDRURTMRQwEgYDVQQKDAtMYWJv
+ cmF0b3JpbzAeFw0yNTAyMjAxMzQ0MzZaFw0yNjAyMjAxMzQ0MzZaMEkxIzAhBgNV
+ BAMMGkdyZW1saW4gQ2xpZW50IENlcnRpZmljYXRlMQwwCgYDVQQLDANFRFMxFDAS
+ BgNVBAoMC0xhYm9yYXRvcmlvMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEhxCS
+ W3lz+5JkerkD27UWYtRDya3mqwKaDQiWCm11zD1GLAcrKOjFCeb9dP61HZ/yg1wh
+ 0jElW322tdaPhbG/KKMdMBswCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCB4AwCgYI
+ KoZIzj0EAwIDSQAwRgIhAOyG2cpR9sSF0FwWMi1SDmXWed7p0hDK2vO4TLHZnYXn
+ AiEA0fIceztMKNhFUe0s+o2DZ15G1NKolz25Q6vKcTjTL6w=
+ -----END CERTIFICATE-----
+ 
+
+## Gremlin Team Certificate, should not be set when using `team_secret`.
+## Paste certificate content here or a paths to the file (prefixed with `file://`)
+## (can also set with GREMLIN_TEAM_PRIVATE_KEY_OR_FILE environment variable)
+team_private_key: | 
+ -----BEGIN EC PRIVATE KEY-----
+ MHcCAQEEINFVlkfO2jqsI6s1CdCzOKiXtA27txJGFnWZo+Z18ac7oAoGCCqGSM49
+ AwEHoUQDQgAEhxCSW3lz+5JkerkD27UWYtRDya3mqwKaDQiWCm11zD1GLAcrKOjF
+ Ceb9dP61HZ/yg1wh0jElW322tdaPhbG/KA==
+ -----END EC PRIVATE KEY-----
+ 
+
+## HTTPS Proxy, set this when routing outbound Gremlin HTTPS traffic through a proxy
+## (can also set with HTTPS_PROXY or https_proxy environment variables)
+#https_proxy: https://localhost:3128
+
+## SSL CERT FILE, set this when using a https proxy with a self-signed certificate
+## Paste certificate content here or a paths to the file (prefixed with `file://`)
+## (can also set with SSL_CERT_FILE environment variable)
+#ssl_cert_file: file:///var/lib/gremlin/proxy_cert.pem
+
+## Push Metrics, tell Gremlin whether to send system metrics to the control plane for charting the impact of attacks in
+## real time. Metrics are only collected during active attacks, and only metrics relevant to the attack are collected.
+## defaults to `true`
+## (can also set with PUSH_METRICS environment variable)
+#push_metrics: true
+
+## Collect Process Data, data about running processes is sent to Gremlin for service discovery.
+# defaults to `false`
+#collect_processes: false
+
+## Collect DNS Data, data about network-bound dependencies is sent to Gremlin for service discovery.
+# defaults to `true`
+#collect_dns: true
